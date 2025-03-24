@@ -19,6 +19,17 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.File("logs/app_log.txt", rollingInterval: RollingInterval.Day)
     .CreateLogger();
 
+// Add CORS Policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 // Add Serilog as the Logging Provider
 builder.Host.UseSerilog();
 
@@ -56,6 +67,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseExceptionHandler();
 app.UseHttpsRedirection();
+app.UseCors("AllowReactApp");  // Apply CORS policy
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
