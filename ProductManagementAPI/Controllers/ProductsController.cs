@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProductManagementAPI.Database.Entities;
 using ProductManagementAPI.Services.Interfaces;
 
 namespace ProductManagementAPI.Controllers
 {
+    [Authorize]
     [Route("api/products")]
     [ApiController]
+
     public class ProductsController : ControllerBase
     {
         private readonly IProductService _productService;
