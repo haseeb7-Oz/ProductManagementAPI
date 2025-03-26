@@ -58,25 +58,25 @@ main {
 }
 
 /* Product Table */
-.product-table {
+.dt-table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
 
-.product-table th,
-.product-table td {
+.dt-table th,
+.dt-table td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-.product-table th {
+.dt-table th {
   background-color: #f5f5f5;
   font-weight: bold;
 }
 
-.product-table tr:hover {
+.dt-table tr:hover {
   background-color: #f9f9f9;
 }
 
@@ -189,4 +189,43 @@ main {
   background-color: #ffebee;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+/* Search Input */
+.search-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Pagination Controls */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 16px;
+  font-weight: bold;
 }

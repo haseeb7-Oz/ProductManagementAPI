@@ -1,6 +1,7 @@
 import axios from 'axios';
+import config from '../config';
 
-const API_URL = 'http://localhost:5143/api/products';
+const API_URL = config.API_URL+"/products";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -8,6 +9,7 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
 
 // Request interceptor for adding token
 // api.interceptors.request.use((config) => {
@@ -18,8 +20,13 @@ const api = axios.create({
 //   return config;
 // });
 
- 
-export const getProducts = () => api.get('/');
+
+// Fetch products with pagination and search
+export const getProducts = (keyword = '', pageNumber = 1, pageSize = 10) => 
+  api.get(`/search`, {
+    params: { keyword, pageNumber, pageSize },
+  });
+
 export const getProductById = (id) => api.get(`/${id}`);
 export const createProduct = (product) => api.post('/create', product);
 export const updateProduct = (id, product) => api.put(`update/`, product);

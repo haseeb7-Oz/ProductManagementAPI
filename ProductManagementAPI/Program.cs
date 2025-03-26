@@ -65,6 +65,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };        
     });
 builder.Services.AddAuthorization();
+// Register Repositories & Services for Customer
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+
+// Add Controllers & Swagger
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 // Register Global Exception Handler
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
