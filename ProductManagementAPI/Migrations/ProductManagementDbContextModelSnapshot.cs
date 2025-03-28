@@ -8,7 +8,7 @@ using ProductManagementAPI.Database;
 
 #nullable disable
 
-namespace ProductManagementAPI.Database.Migrations
+namespace ProductManagementAPI.Migrations
 {
     [DbContext(typeof(ProductManagementDbContext))]
     partial class ProductManagementDbContextModelSnapshot : ModelSnapshot

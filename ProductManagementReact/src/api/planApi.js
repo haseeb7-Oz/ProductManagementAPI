@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../config';
 
-const API_URL = config.API_URL+"/plan-management";
+const API_URL = config.API_URL + "/plan-management";
 
 const api = axios.create({
   baseURL: API_URL,
@@ -9,7 +9,6 @@ const api = axios.create({
     'Content-Type': 'application/json',
   },
 });
-
 
 // Request interceptor for adding token
 api.interceptors.request.use((config) => {
@@ -20,14 +19,13 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-
-// Fetch products with pagination and search
-export const getProducts = (keyword = '', pageNumber = 1, pageSize = 10) => 
+// Fetch plans with pagination and search
+export const getPlans = (keyword = '', pageNumber = 1, pageSize = 10) => 
   api.get(`/search`, {
     params: { keyword, pageNumber, pageSize },
   });
 
-export const getProductById = (id) => api.get(`/${id}`);
-export const createProduct = (product) => api.post('/create', product);
-export const updateProduct = (id, product) => api.put(`update/`, product);
-export const deleteProduct = (id) => api.delete(`/${id}`);
+export const getPlanById = (id) => api.get(`/${id}`);
+export const createPlan = (plan) => api.post('/create', plan);
+export const updatePlan = (id, plan) => api.put(`/update/`, plan);
+export const deletePlan = (id) => api.delete(`/${id}`);
