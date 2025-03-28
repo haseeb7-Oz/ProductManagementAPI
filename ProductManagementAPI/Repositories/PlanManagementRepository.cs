@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductManagementAPI.Database;
 using ProductManagementAPI.Database.Entities;
+using ProductManagementAPI.DTOs;
 using ProductManagementAPI.Repositories.Interfaces;
 
 namespace ProductManagementAPI.Repositories
@@ -18,18 +19,24 @@ namespace ProductManagementAPI.Repositories
 
         public async Task<PlanManagementEntity> GetByIdAsync(Guid id) => await _context.PlanManagements.FindAsync(id);
 
-        public async Task<IEnumerable<PlanManagementEntity>> SearchAsync(string? keyword, int pageNumber, int pageSize)
+        public async Task<IEnumerable<PlanManagementEntity>> SearchAsync(PlanSearchDto searchDto)
         {
             var query = _context.PlanManagements.AsQueryable();
 
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                query = query.Where(p => p.PlanName.Contains(keyword));
-            }
+            // Dynamically build filters
+            query = query
+            .Where(p =>
+                (string.IsNullOrEmpty(searchDto.PlanNumber) || p.PlanNumber == searchDto.PlanNumber) &&
+                (string.IsNullOrEmpty(searchDto.PlanName) || p.PlanName == searchDto.PlanName) &&
+                (!searchDto.MonthId.HasValue || p.MonthId == searchDto.MonthId) &&
+                (!searchDto.YearId.HasValue || p.YearId == searchDto.YearId) &&
+                (!searchDto.PropertyId.HasValue || p.PropertyId == searchDto.PropertyId) &&
+                (!searchDto.StatusId.HasValue || p.StatusId == searchDto.StatusId)
+            );
 
             return await query
-                .Skip((pageNumber - 1) * pageSize)
-                .Take(pageSize)
+                .Skip((searchDto.PageNumber - 1) * searchDto.PageSize)
+                .Take(searchDto.PageSize)
                 .ToListAsync();
         }
 
