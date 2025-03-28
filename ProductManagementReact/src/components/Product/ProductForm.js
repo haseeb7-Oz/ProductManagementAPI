@@ -53,7 +53,7 @@ const ProductForm = () => {
       } else {
         await productApi.createProduct(productData);
       }
-      navigate('/products');
+      navigate('/plan-management');
     } catch (err) {
       setError(`Failed to ${id ? 'update' : 'create'} product`);
     }
@@ -64,7 +64,7 @@ const ProductForm = () => {
       <header className="navbar">
         <h1>{id ? 'Edit Product' : 'Create Product'}</h1>
         <nav>
-          <button className="nav-button" onClick={() => navigate('/products')}>
+          <button className="nav-button" onClick={() => navigate('/plan-management')}>
             Back to List
           </button>
         </nav>
@@ -125,7 +125,7 @@ const ProductForm = () => {
             <button
               type="button"
               className="cancel-button"
-              onClick={() => navigate('/products')}
+              onClick={() => navigate('/plan-management')}
             >
               Cancel
             </button>

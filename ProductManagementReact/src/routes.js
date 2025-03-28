@@ -11,9 +11,9 @@ const AppRoutes = ({
   <Routes>
     {isAuthenticated ? (
       <>
-        <Route path="/products" element={<ProductList />} />
-        <Route path="/products/create" element={<ProductForm />} />
-        <Route path="/products/edit/:id" element={<ProductForm />} />
+        <Route path="/plan-management" element={<ProductList />} />
+        <Route path="/plan-management/create" element={<ProductForm />} />
+        <Route path="/plan-management/edit/:id" element={<ProductForm />} />
         <Route path="/customers" element={<CustomerList />} />
         <Route path="/customers/create" element={<CustomerForm />} />
         <Route path="/customers/edit/:id" element={<CustomerForm />} />

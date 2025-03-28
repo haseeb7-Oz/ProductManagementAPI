@@ -14,15 +14,15 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container">
       <Link className="navbar-brand" to="/">
-        Product Management
+      Plan Management
       </Link>
       <div className="collapse navbar-collapse">
         <ul className="navbar-nav ms-auto">
           {isAuthenticated ? (
             <>
               <li className="nav-item">
-                <Link className="nav-link" to="/products">
-                  Products
+                <Link className="nav-link" to="/plan-management">
+                Plan Management
                 </Link>
               </li>
               <li className="nav-item">
