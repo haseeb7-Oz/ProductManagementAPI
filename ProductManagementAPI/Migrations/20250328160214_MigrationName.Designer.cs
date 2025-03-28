@@ -9,11 +9,11 @@ using ProductManagementAPI.Database;
 
 #nullable disable
 
-namespace ProductManagementAPI.Database.Migrations
+namespace ProductManagementAPI.Migrations
 {
     [DbContext(typeof(ProductManagementDbContext))]
-    [Migration("20250328150419_AddSeedersForPlanManagement")]
-    partial class AddSeedersForPlanManagement
+    [Migration("20250328160214_MigrationName")]
+    partial class MigrationName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

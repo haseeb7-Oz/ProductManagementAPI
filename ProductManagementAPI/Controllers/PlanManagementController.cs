@@ -23,6 +23,7 @@ namespace ProductManagementAPI.Controllers
         public async Task<ActionResult<PlanManagementEntity?>> Add(PlanManagementEntity plan)
         {
             _logger.LogInformation("Creating a new Plan: {@Plan}", plan);
+            //plan.Id = 0;
             return Ok(await _planManagementService.AddPlanAsync(plan));
         }
 
