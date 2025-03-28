@@ -20,7 +20,7 @@ const Login = ({ setIsAuthenticated }) => {
       localStorage.setItem("token", token); // Store token
 
       setIsAuthenticated(true);
-      navigate("/plan-management"); // Redirect after login
+      navigate("/products"); // Redirect after login
 
     } catch (error) {
       setError("Invalid username or password. Please try again.");
