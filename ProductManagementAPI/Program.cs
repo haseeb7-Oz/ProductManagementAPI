@@ -41,6 +41,8 @@ builder.Services.AddDbContext<ProductManagementDbContext>(options =>
 // Register Repositories & Services
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IPlanManagementRepository, PlanManagementRepository>();
+builder.Services.AddScoped<IPlanManagementService, PlanManagementService>();
 builder.Services.AddSingleton<JwtService>();
 
 // Configure JWT authentication
