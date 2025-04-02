@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import PlanList from "./components/Product/PlanList";
-import PlanOffers from "./components/PlanOffers/PlanOffers";
-import PlanManager from "./components/Product/PlanManager";
+import PlanList from "./components/Plan/PlanSearch";
+import PlanOffers from "./components/Plan/CreatePlan";
+import PlanManager from "./components/Plan/CreatePlan";
 import CustomerList from "./components/Customer/CustomerList";
 import CustomerForm from "./components/Customer/CustomerForm";
 

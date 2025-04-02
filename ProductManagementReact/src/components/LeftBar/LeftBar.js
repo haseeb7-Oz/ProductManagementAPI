@@ -1,42 +1,44 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
-import Contact from "./Contact";
-import "./styles.css";
+import { BrowserRouter, Routes, Route, Navigate, Link } from "react-router-dom";
+import logo from "../../assets/img/LargeLogo.svg";
+import vectorIcon from "../../assets/icon/Vector.png";
 
-const App = () => {
+
+const LeftBar  = () => {
   return (
-    <Router>
-      <div className="container">
-        {/* Left Sidebar */}
-        <aside className="sidebar">
-          <img src="/logo.png" alt="Logo" className="logo" />
-          <nav>
-            <ul>
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/about">About</Link></li>
-              <li><Link to="/contact">Contact</Link></li>
-            </ul>
-          </nav>
-        </aside>
-
-        {/* Main Content */}
-        <main className="main-content">
-          <header className="top-navbar">
-            <button className="login-button">Login</button>
-          </header>
-          <div className="content">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </div>
-        </main>
+  
+   
+        <aside
+      className="sidebar bg-dark text-white p-3 d-flex flex-column"
+      style={{ width: "250px", height: "110vh" }}
+    >
+      <div className="text-center mb-4">
+        <img
+          src={logo}
+          alt="Logo"
+          className="img-fluid"
+          style={{ maxWidth: "150px" }}
+        />
       </div>
-    </Router>
+      <nav>
+        <ul className="list-unstyled">
+          <li className="mb-3 d-flex align-items-center">
+            <img
+              src={vectorIcon}
+              alt="Plan Icon"
+              style={{ width: "20px", marginRight: "10px" }}
+            />
+            <Link className="text-white text-decoration-none" to="/plan-management">
+              Plan Management
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+      
   );
+ 
 };
 
-export default App;
+export default LeftBar ;
