@@ -1,7 +1,8 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import ProductList from "./components/Product/ProductList";
-import ProductForm from "./components/Product/ProductForm";
+import PlanList from "./components/Product/PlanList";
+import PlanOffers from "./components/PlanOffers/PlanOffers";
+import PlanManager from "./components/Product/PlanManager";
 import CustomerList from "./components/Customer/CustomerList";
 import CustomerForm from "./components/Customer/CustomerForm";
 
@@ -11,13 +12,14 @@ const AppRoutes = ({
   <Routes>
     {isAuthenticated ? (
       <>
-        <Route path="/plan-management" element={<ProductList />} />
-        <Route path="/plan-management/create" element={<ProductForm />} />
-        <Route path="/plan-management/edit/:id" element={<ProductForm />} />
+        <Route path="/plan-management" element={<PlanList />} />
+        <Route path="/plan-offers" element={<PlanOffers />} />
+        <Route path="/plan-management/create" element={<PlanManager />} />
+        <Route path="/plan-management/edit/:id" element={<PlanManager />} />
         <Route path="/customers" element={<CustomerList />} />
         <Route path="/customers/create" element={<CustomerForm />} />
         <Route path="/customers/edit/:id" element={<CustomerForm />} />
-        <Route path="/" element={<ProductList />} />
+        <Route path="/" element={<PlanList />} />
       </>
     ) : (
       <Route path="*" element={<Navigate to="/login" />} />

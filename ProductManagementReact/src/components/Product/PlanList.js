@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import * as productApi from "../../api/productApi";
 import "../../App.css";
 
-const ProductList = () => {
+const PlanList = () => {
   const [year, setYear] = useState("2024");
   const [month, setMonth] = useState("");
   const [planNumber, setPlanNumber] = useState("");
@@ -200,7 +200,7 @@ const ProductList = () => {
                       : "Planning"}
                   </td>
                   <td>
-                    <button className="btn btn-sm me-1">✏️</button>
+                    <button className="btn btn-sm me-1" onClick={()=>navigate(`/plan-offers`)} >✏️</button>
                     <button className="btn btn-sm  me-1">🗑️</button>
                     <button className="btn btn-sm ">📅</button>
                   </td>
@@ -295,4 +295,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default PlanList;

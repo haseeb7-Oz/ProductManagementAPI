@@ -150,11 +150,12 @@ main {
 }
 
 .submit-button {
-  background-color: #4caf50;
+  background-color: #999999;
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 5px;
+  padding: 3px 45px;
+  border-radius: 25px;
+  margin: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -164,11 +165,12 @@ main {
 }
 
 .cancel-button {
-  background-color: #757575;
+  background-color: #2B2B2B;
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius: 5px;
+  margin: 5px;
+  padding: 3px 45px;
+  border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -237,4 +239,9 @@ main {
 .table{
   --bs-table-bg: none !important;
   --bs-table-color:none !important;
+}
+
+.button-container{
+  margin-top: 20px;
+  
 }

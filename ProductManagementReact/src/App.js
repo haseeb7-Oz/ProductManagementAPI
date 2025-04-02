@@ -71,6 +71,7 @@ const App = () => {
                 <>
                   <Route path="/*" element={<AppRoutes isAuthenticated={isAuthenticated} />} />
                   <Route path="/" element={<Navigate to="/plan-management" />} />
+                  <Route path="/" element={<Navigate to="/plan-offers" />} />
                 </>
               )}
             </Routes>

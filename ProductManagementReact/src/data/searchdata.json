@@ -1,0 +1,8 @@
+{
+    "search":{
+    "years":[2020,2021,2022,2023,2024,2025],
+    "months":["January","February","March","April","May","June","July","August","September","October","November","December"],
+    "status":["Execution","Initition","Planing"],
+    "property":["HRCIN"]
+    }
+}
