@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from '../config';
 
-const API_URL = config.API_URL+"/products";
+const API_URL = config.API_URL+"/plan-management";
 
 const api = axios.create({
   baseURL: API_URL,

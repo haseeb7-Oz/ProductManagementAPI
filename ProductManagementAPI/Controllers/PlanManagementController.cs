@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductManagementAPI.Database.Entities;
+using ProductManagementAPI.DTOs;
 using ProductManagementAPI.Services.Interfaces;
 
 namespace ProductManagementAPI.Controllers
@@ -41,10 +42,10 @@ namespace ProductManagementAPI.Controllers
             return plan == null ? NotFound() : Ok(plan);
         }
 
-        [HttpGet("search")]
-        public async Task<IActionResult> Search([FromQuery] string? keyword, [FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
+        [HttpPost("search")]
+        public async Task<IActionResult> Search([FromBody] PlanSearchDto searchDto)
         {
-            var plans = await _planManagementService.SearchPlansAsync(keyword, pageNumber, pageSize);
+            var plans = await _planManagementService.SearchPlansAsync(searchDto);
             return Ok(plans);
         }
 

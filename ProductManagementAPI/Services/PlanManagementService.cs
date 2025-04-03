@@ -1,4 +1,5 @@
 ﻿using ProductManagementAPI.Database.Entities;
+using ProductManagementAPI.DTOs;
 using ProductManagementAPI.Repositories;
 using ProductManagementAPI.Repositories.Interfaces;
 using ProductManagementAPI.Services.Interfaces;
@@ -16,11 +17,11 @@ namespace ProductManagementAPI.Services
 
         public async Task<IEnumerable<PlanManagementEntity>> GetAllPlansAsync() => await _planManagementRepository.GetAllAsync();
 
-        public async Task<PlanManagementEntity> GetPlanByIdAsync(Guid id) => await _planManagementRepository.GetByIdAsync(id);
+        public async Task<PlanManagementEntity?> GetPlanByIdAsync(Guid id) => await _planManagementRepository.GetByIdAsync(id);
 
-        public async Task<IEnumerable<PlanManagementEntity>> SearchPlansAsync(string? keyword, int pageNumber, int pageSize)
+        public async Task<IEnumerable<PlanManagementEntity>> SearchPlansAsync(PlanSearchDto searchDto)
         {
-            return await _planManagementRepository.SearchAsync(keyword, pageNumber, pageSize);
+            return await _planManagementRepository.SearchAsync(searchDto);
         }
 
         public async Task<PlanManagementEntity> AddPlanAsync(PlanManagementEntity plan) => await _planManagementRepository.AddAsync(plan);
