@@ -12,16 +12,22 @@ namespace ProductManagementAPI.Repositories
 
         public PlanManagementRepository(ProductManagementDbContext context)
         {
-           _context = context; 
+            _context = context;
         }
 
-        public async Task<IEnumerable<PlanManagementEntity>> GetAllAsync() => await _context.PlanManagements.ToListAsync();
+        public async Task<IEnumerable<PlanManagementEntity>> GetAllAsync()
+        {
+            return await GetBaseQuery().ToListAsync();
+        }
 
-        public async Task<PlanManagementEntity> GetByIdAsync(Guid id) => await _context.PlanManagements.FindAsync(id);
+        public async Task<PlanManagementEntity?> GetByIdAsync(Guid id)
+        {
+            return await GetBaseQuery().FirstOrDefaultAsync(pm => pm.Id == id);
+        }
 
         public async Task<IEnumerable<PlanManagementEntity>> SearchAsync(PlanSearchDto searchDto)
         {
-            var query = _context.PlanManagements.AsQueryable();
+            var query = GetBaseQuery().AsQueryable();
 
             // Dynamically build filters
             query = query
@@ -65,5 +71,19 @@ namespace ProductManagementAPI.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+
+        #region Helper Methods
+
+        private IQueryable<PlanManagementEntity> GetBaseQuery()
+        {
+            return _context.PlanManagements
+                .Include(pm => pm.Month)
+                .Include(pm => pm.Year)
+                .Include(pm => pm.Property)
+                .Include(pm => pm.Status);
+        }
+
+        #endregion
     }
 }

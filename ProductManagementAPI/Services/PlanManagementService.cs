@@ -17,7 +17,7 @@ namespace ProductManagementAPI.Services
 
         public async Task<IEnumerable<PlanManagementEntity>> GetAllPlansAsync() => await _planManagementRepository.GetAllAsync();
 
-        public async Task<PlanManagementEntity> GetPlanByIdAsync(Guid id) => await _planManagementRepository.GetByIdAsync(id);
+        public async Task<PlanManagementEntity?> GetPlanByIdAsync(Guid id) => await _planManagementRepository.GetByIdAsync(id);
 
         public async Task<IEnumerable<PlanManagementEntity>> SearchPlansAsync(PlanSearchDto searchDto)
         {
