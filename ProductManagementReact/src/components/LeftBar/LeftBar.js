@@ -10,7 +10,7 @@ const LeftBar  = () => {
    
         <aside
       className="sidebar bg-dark text-white p-3 d-flex flex-column"
-      style={{ width: "250px", height: "110vh" }}
+      
     >
       <div className="text-center mb-4">
         <img

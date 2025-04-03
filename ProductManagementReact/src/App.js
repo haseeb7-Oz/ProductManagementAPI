@@ -31,7 +31,7 @@ const App = () => {
           <LeftBar/> 
         )}
 
-        <div className="flex-grow-1">
+        <div className="flex-grow-1 content-area">
           {/* Navbar */}
           <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm px-3">
             <div className="container-fluid">

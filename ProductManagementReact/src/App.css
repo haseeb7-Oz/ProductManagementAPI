@@ -236,12 +236,45 @@ main {
 .bg-color-header{
   background-color: #0FA3EB !important;
 }
+.bg-color-header-sm{
+  background-color: #E6E6E6 !important;
+}
 .table{
   --bs-table-bg: none !important;
   --bs-table-color:none !important;
 }
 
+
+.table>:not(caption)>*>*{
+ 
+  padding: 4px !important;
+
+    
+    --bs-border-width: 0px;
+}
 .button-container{
   margin-top: 20px;
-  
+}
+.text-size{
+  font-size: 12px;
+}
+.w-10{
+  width: 10% !important;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #343a40; /* Dark background */
+  color: white;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.content-area {
+  margin-left: 250px; /* Same width as sidebar */
+  width: calc(100% - 250px); /* Prevent overlap */
 }
