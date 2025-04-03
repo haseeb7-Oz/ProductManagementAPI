@@ -88,8 +88,8 @@ const ProductList = () => {
 
         {!loading && !error && (
           <>
-            <table className="dt-table">
-              <thead>
+            <table className="table text-center">
+              <thead className="text-white bg-color-header">
                 <tr>
                   <th>Name</th>
                   <th>Description</th>

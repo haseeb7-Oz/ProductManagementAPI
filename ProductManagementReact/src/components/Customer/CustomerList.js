@@ -85,8 +85,8 @@ const CustomerList = () => {
 
         {!loading && !error && (
           <>
-            <table className="dt-table">
-              <thead>
+            <table className="table text-center">
+              <thead className="text-white bg-color-header">
                 <tr>
                   <th>First Name</th>
                   <th>Last Name</th>
