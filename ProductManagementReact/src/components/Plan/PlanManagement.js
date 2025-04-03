@@ -4,12 +4,12 @@ import * as planApi from "../../api/planApi";
 import "../../App.css";
 import { PropertyArray,StatusArray ,MonthsArray,YearsArray   } from "../../constant";
 const PlanList = () => {
-  const [year, setYear] = useState("2024");
-  const [month, setMonth] = useState("");
+  const [year, setYear] = useState();
+  const [month, setMonth] = useState();
   const [planNumber, setPlanNumber] = useState("");
   const [planName, setPlanName] = useState("");
-  const [status, setStatus] = useState("");
-  const [property, setProperty] = useState("");
+  const [status, setStatus] = useState();
+  const [property, setProperty] = useState();
   const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -22,19 +22,23 @@ const PlanList = () => {
   
  
 
-    const searchParams = {
-      year,
-      month,
+    const searchDto = {
+      yearid:year,
+      monthid:month,
       planNumber,
       planName,
-      status,
-      property,
+      statusid:status,
+      propertyid:property,
+      pageNumber,
+      pageSize
+
     };
 
     try {
       setLoading(true);
-      const response = await planApi.getPlans(searchParams, pageNumber, pageSize);
-      setPlans(response.data?.plans || []);
+      debugger
+      const response = await planApi.getPlans(searchDto);
+      setPlans(response.data || []);
       setTotalPages(response.data?.totalPages || 1);
     } catch (err) {
       setPlans([]);
@@ -165,8 +169,8 @@ const PlanList = () => {
                 <tr key={plan.id} className={index % 2 === 0 ? "bg-light" : ""}>
                   <td>{plan.planNumber}</td>
                   <td>{plan.planName}</td>
-                  <td>{plan.property}</td>
-                  <td>{plan.status}</td>
+                  <td>{plan.property.name}</td>
+                  <td>{plan.status.status}</td>
                   <td>
                     <button className="btn btn-sm me-1" onClick={() => handleEdit(plan.id)}>✏️</button>
                     <button className="btn btn-sm me-1" onClick={() => handleDelete(plan.id)}>🗑️</button>

@@ -1,53 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import * as customerApi from '../../api/customerApi';
+import * as productApi from '../../api/productApi';
 import '../../App.css';
 
-const CustomerList = () => {
-  const [customers, setCustomers] = useState([]);
-  const [loading, setLoading] = useState(false);
+const ProductList = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false); 
   const [error, setError] = useState(null);
-  const [keyword, setKeyword] = useState('');
-  const [pageNumber, setPageNumber] = useState(1);
+  const [keyword, setKeyword] = useState(null);
+  const [pageNumber, setPageNumber] = useState();
   const [pageSize] = useState(10);
   const [totalPages, setTotalPages] = useState(1);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchCustomers();
+    fetchProducts();
   }, [keyword, pageNumber]);
 
-  const fetchCustomers = async () => {
+  const fetchProducts = async () => {
     try {
+        debugger
       setLoading(true);
-      const response = await customerApi.getCustomers(keyword, pageNumber, pageSize);
+      const response = await productApi.getProducts();
+      debugger
+      // Ensure response.data is always an array
       if (response.data && Array.isArray(response.data)) {
-        setCustomers(response.data|| []);
+        setProducts(response.data|| []);
       } else {
-        setCustomers([]);
+        setProducts([]); // Set an empty array if response.data is not iterable
       }
-      setTotalPages(response.data?.totalPages || 1);
+  
+      setLoading(false);
     } catch (err) {
-      setCustomers([]);
-      setError('Failed to fetch customers. Please ensure the API is running.');
-    } finally {
+      setProducts([]); // Ensure the products state is always an array
+      setError('Failed to fetch products. Please ensure the API is running.');
       setLoading(false);
     }
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm('Are you sure you want to delete this customer?')) {
+    if (window.confirm('Are you sure you want to delete this product?')) {
       try {
-        await customerApi.deleteCustomer(id);
-        setCustomers(customers.filter((customer) => customer.id !== id));
+        await productApi.deleteProduct(id);
+        setProducts(products.filter((product) => product.id !== id));
       } catch (err) {
-        setError('Failed to delete customer');
+        setError('Failed to delete product');
       }
     }
   };
 
   const handleEdit = (id) => {
-    navigate(`/customers/edit/${id}`);
+    navigate(`/products/edit/${id}`);
   };
 
   const handleSearchChange = (e) => {
@@ -64,17 +67,17 @@ const CustomerList = () => {
   return (
     <div className="container">
       <header className="navbar">
-        <h1>Customer Management</h1>
+        <h1>Product Management</h1>
         <nav>
-          <button className="nav-button" onClick={() => navigate('/customers/create')}>
-            Add Customer
+          <button className="nav-button" onClick={() => navigate('/products/create')}>
+            Add Product
           </button>
         </nav>
       </header>
       <main>
         <input
           type="text"
-          placeholder="Search customers..."
+          placeholder="Search products..."
           value={keyword}
           onChange={handleSearchChange}
           className="search-input"
@@ -88,30 +91,30 @@ const CustomerList = () => {
             <table className="dt-table">
               <thead>
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Stock</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {customers.length === 0 ? (
+                {products.length === 0 ? (
                   <tr>
-                    <td colSpan="5" className="no-data">No customers found</td>
+                    <td colSpan="5" className="no-data">No products found</td>
                   </tr>
                 ) : (
-                  customers.map((customer) => (
-                    <tr key={customer.id}>
-                      <td>{customer.firstName}</td>
-                      <td>{customer.lastName}</td>
-                      <td>{customer.email}</td>
-                      <td>{customer.phoneNumber}</td>
+                  products.map((product) => (
+                    <tr key={product.id}>
+                      <td>{product.name}</td>
+                      <td>{product.description}</td>
+                      <td>${product.price}</td>
+                      <td>{product.stock}</td>
                       <td>
-                        <button className="action-button edit" onClick={() => handleEdit(customer.id)}>
+                        <button className="action-button edit" onClick={() => handleEdit(product.id)}>
                           Edit
                         </button>
-                        <button className="action-button delete" onClick={() => handleDelete(customer.id)}>
+                        <button className="action-button delete" onClick={() => handleDelete(product.id)}>
                           Delete
                         </button>
                       </td>
@@ -139,4 +142,4 @@ const CustomerList = () => {
   );
 };
 
-export default CustomerList;
+export default ProductList;

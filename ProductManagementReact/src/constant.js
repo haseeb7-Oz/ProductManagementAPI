@@ -1,7 +1,7 @@
 export const YearsEnum = Object.freeze({
-    YEAR_2022: { value: 2022, label: "2022" },
-    YEAR_2023: { value: 2023, label: "2023" },
-    YEAR_2024: { value: 2024, label: "2024" },
+    YEAR_2022: { value: 1, label: "2022" },
+    YEAR_2023: { value: 2, label: "2023" },
+    YEAR_2024: { value: 3, label: "2024" },
   });
   
   // Convert Enum to Array for Dropdown Usage

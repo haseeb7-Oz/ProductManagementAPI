@@ -4,7 +4,8 @@ import PlanManagement from "./components/Plan/PlanManagement";
 import PlanForm from "./components/Plan/PlanForm";
 import CustomerList from "./components/Customer/CustomerList";
 import CustomerForm from "./components/Customer/CustomerForm";
-
+import ProductList from './components/Product/ProductList';
+import ProductForm from './components/Product/ProductForm';
 const AppRoutes = ({ 
   
   isAuthenticated }) => (
@@ -18,6 +19,11 @@ const AppRoutes = ({
         <Route path="/customers/create" element={<CustomerForm />} />
         <Route path="/customers/edit/:id" element={<CustomerForm />} />
         <Route path="/" element={<PlanManagement />} />
+
+        <Route path="/products" element={<ProductList />} />
+    <Route path="/products/create" element={<ProductForm />} />
+    <Route path="/products/edit/:id" element={<ProductForm />} />
+   
       </>
     ) : (
       <Route path="*" element={<Navigate to="/login" />} />

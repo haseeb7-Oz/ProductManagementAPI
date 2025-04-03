@@ -9,7 +9,7 @@ const PlanForm = () => {
   const navigate = useNavigate();
 
   const [plan, setPlan] = useState({
-    name: "",
+    planname: "",
     plannumber: "",
     monthid: 0,
     yearid: 0,
@@ -22,14 +22,15 @@ const PlanForm = () => {
   const fetchPlan = useCallback(async () => {
     try {
       const response = await planApi.getPlanById(id);
+      debugger
       setPlan({
         id: response.data.id,
-        name: response.data.name,
-        plannumber: response.data.plannumber || "",
-        monthid: response.data.monthid,
-        yearid: response.data.yearid,
-        statusid: response.data.statusid,
-        propertyid: response.data.propertyid,
+        planname: response.data.planName,
+        plannumber: response.data.planNumber || "",
+        monthid: response.data.monthId,
+        yearid: response.data.yearId,
+        statusid: response.data.statusId,
+        propertyid: response.data.propertyId,
       });
     } catch (err) {
       setError("Failed to fetch plan");
@@ -108,7 +109,7 @@ const PlanForm = () => {
               <label className="mb-1">Plan Name</label>
             </div>
             <div className="col-md-4">
-              <input type="text" className="form-control" name="name" value={plan.name} onChange={handleChange} required />
+              <input type="text" className="form-control" name="planname" value={plan.planname} onChange={handleChange} required />
             </div>
             <div className="col-md-2">
               <label className="mb-1">Status</label>

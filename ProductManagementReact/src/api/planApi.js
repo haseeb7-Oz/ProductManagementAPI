@@ -20,10 +20,8 @@ api.interceptors.request.use((config) => {
 });
 
 // Fetch plans with pagination and search
-export const getPlans = (keyword = '', pageNumber = 1, pageSize = 10) => 
-  api.get(`/search`, {
-    params: { keyword, pageNumber, pageSize },
-  });
+export const getPlans = (searchDto) => 
+    api.post(`/search`, searchDto);
 
 export const getPlanById = (id) => api.get(`/${id}`);
 export const createPlan = (plan) => api.post('/create', plan);

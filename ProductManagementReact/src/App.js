@@ -41,6 +41,10 @@ const App = () => {
                   <img src={vectorIcon} alt="Plan Icon" style={{ width: "20px", marginRight: "10px" }} />
                   <Link className="text-white text-decoration-none" to="/customers">Customers</Link>
                 </li>
+                <li className="mb-3 d-flex align-items-center">
+                  <img src={vectorIcon} alt="Plan Icon" style={{ width: "20px", marginRight: "10px" }} />
+                  <Link className="text-white text-decoration-none" to="/products">Products</Link>
+                </li>
               </ul>
             </nav>
           </aside>
