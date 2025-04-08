@@ -43,6 +43,8 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IPlanManagementRepository, PlanManagementRepository>();
 builder.Services.AddScoped<IPlanManagementService, PlanManagementService>();
+builder.Services.AddScoped<ITierRepository, TierRepository>();
+builder.Services.AddScoped<ITierService, TierService>();
 builder.Services.AddSingleton<JwtService>();
 
 // Configure JWT authentication

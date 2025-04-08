@@ -1,6 +1,5 @@
 ﻿using ProductManagementAPI.Database.Entities;
 using ProductManagementAPI.DTOs;
-using ProductManagementAPI.Repositories;
 using ProductManagementAPI.Repositories.Interfaces;
 using ProductManagementAPI.Services.Interfaces;
 
