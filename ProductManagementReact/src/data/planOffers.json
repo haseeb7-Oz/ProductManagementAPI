@@ -1,0 +1,198 @@
+[
+    {
+      "id": 1,
+      "name": "2000n100ADW_s",
+      "offers": [
+        {
+          "offer_name": "Slot Offers",
+          "date_range": "1/1 - 1/31",
+          "sundays": 450,
+          "mondays": 450,
+          "tuesdays": 450,
+          "wednesdays": 300,
+          "thursdays": 300,
+          "fridays": 300,
+          "saturdays": 300
+        },
+        {
+          "offer_name": "Food Offers",
+          "date_range": "1/1 - 1/31",
+          "sundays": 450,
+          "mondays": 450,
+          "tuesdays": 450,
+          "wednesdays": 300,
+          "thursdays": 300,
+          "fridays": 300,
+          "saturdays": 300
+        },
+        {
+          "offer_name": "Gift Card",
+          "date_range": "1/1 - 1/31",
+          "sundays": 450,
+          "mondays": 450,
+          "tuesdays": 450,
+          "wednesdays": 300,
+          "thursdays": 300,
+          "fridays": 300,
+          "saturdays": 300
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "2000n100ADW_s",
+      "offers": [
+        {
+            "offer_name": "Slot Offers",
+            "date_range": "1/1 - 1/31",
+            "sundays": 450,
+            "mondays": 450,
+            "tuesdays": 450,
+            "wednesdays": 300,
+            "thursdays": 300,
+            "fridays": 300,
+            "saturdays": 300
+          },
+          {
+            "offer_name": "Food Offers",
+            "date_range": "1/1 - 1/31",
+            "sundays": 450,
+            "mondays": 450,
+            "tuesdays": 450,
+            "wednesdays": 300,
+            "thursdays": 300,
+            "fridays": 300,
+            "saturdays": 300
+          },
+          {
+            "offer_name": "Gift Card",
+            "date_range": "1/1 - 1/31",
+            "sundays": 450,
+            "mondays": 450,
+            "tuesdays": 450,
+            "wednesdays": 300,
+            "thursdays": 300,
+            "fridays": 300,
+            "saturdays": 300
+          }
+      ]
+    },
+    {
+        "id": 3,
+        "name": "303403120ADW_s",
+        "offers": [
+          {
+              "offer_name": "Slot Offers",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            },
+            {
+              "offer_name": "Food Offers",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            },
+            {
+              "offer_name": "Gift Card",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "44340n120ADW_s",
+        "offers": [
+          {
+              "offer_name": "Slot Offers",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            },
+            {
+              "offer_name": "Food Offers",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            },
+            {
+              "offer_name": "Gift Card",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "4489n3120ADW_s",
+        "offers": [
+          {
+              "offer_name": "Slot Offers",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            },
+            {
+              "offer_name": "Food Offers",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            },
+            {
+              "offer_name": "Gift Card",
+              "date_range": "1/1 - 1/31",
+              "sundays": 450,
+              "mondays": 450,
+              "tuesdays": 450,
+              "wednesdays": 300,
+              "thursdays": 300,
+              "fridays": 300,
+              "saturdays": 300
+            }
+        ]
+      }
+  ]
+  

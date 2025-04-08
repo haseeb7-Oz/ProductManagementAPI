@@ -35,6 +35,7 @@ body {
   font-size: 24px;
 }
 
+
 .nav-button {
   background-color: #01B172;
   color: white;
@@ -234,13 +235,34 @@ main {
 .bg-color-header{
   background-color: #0FA3EB !important;
 }
+.bg-color-header-sm{
+  background-color: #E6E6E6 !important;
+}
 .table{
   --bs-table-bg: none !important;
   --bs-table-color:none !important;
 }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+
+.table>:not(caption)>*>*{
+ 
+  padding: 4px !important;
+
+    
+    --bs-border-width: 0px;
+}
+.button-container{
+  margin-top: 20px;
+}
+.text-size{
+  font-size: 12px;
+}
+.w-10{
+  width: 10% !important;
+}
+
+
+.content-area {
+  margin-left: 500px; /* Same width as sidebar */
+  width: calc(100% - 250px); /* Prevent overlap */
 }

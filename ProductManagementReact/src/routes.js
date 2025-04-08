@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import PlanManagement from "./components/Plan/PlanManagement";
 import PlanForm from "./components/Plan/PlanForm";
+import PlanOffers from "./components/Plan/PlanOffers";
 import CustomerList from "./components/Customer/CustomerList";
 import CustomerForm from "./components/Customer/CustomerForm";
 import ProductList from './components/Product/ProductList';
@@ -14,6 +15,7 @@ const AppRoutes = ({
       <>
         <Route path="/plan-management" element={<PlanManagement />} />
         <Route path="/plan-management/create" element={<PlanForm />} />
+        <Route path="/plan-offers" element={<PlanOffers />} /> 
         <Route path="/plan-management/edit/:id" element={<PlanForm />} />
         <Route path="/customers" element={<CustomerList />} />
         <Route path="/customers/create" element={<CustomerForm />} />
