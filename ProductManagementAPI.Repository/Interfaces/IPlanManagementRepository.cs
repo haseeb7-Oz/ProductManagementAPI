@@ -1,5 +1,5 @@
 ﻿using ProductManagementAPI.Database.Entities;
-using ProductManagementAPI.DTOs;
+using ProductManagementAPI.Common.Dtos;
 
 namespace ProductManagementAPI.Repositories.Interfaces
 {

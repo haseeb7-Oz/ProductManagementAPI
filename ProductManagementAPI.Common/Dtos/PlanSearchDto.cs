@@ -1,4 +1,4 @@
-﻿namespace ProductManagementAPI.DTOs
+﻿namespace ProductManagementAPI.Common.Dtos
 {
     public class PlanSearchDto
     {

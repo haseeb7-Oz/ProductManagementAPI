@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductManagementAPI.Database;
 using ProductManagementAPI.Database.Entities;
-using ProductManagementAPI.DTOs;
 using ProductManagementAPI.Repositories.Interfaces;
+using ProductManagementAPI.Common.Dtos;
 
 namespace ProductManagementAPI.Repositories
 {
