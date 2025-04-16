@@ -1,7 +1,4 @@
 ﻿using ProductManagementAPI.Database.Entities;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ProductManagementAPI.Repositories.Interfaces
 {
