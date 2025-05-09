@@ -1,5 +1,5 @@
 trigger:
-  - master
+- master
 
 pool:
   vmImage: 'windows-latest'
@@ -11,58 +11,64 @@ variables:
   artifactName: 'drop'
 
 stages:
-  - stage: Build
-    displayName: 'Build and Test'
-    jobs:
-      - job: BuildJob
-        steps:
-          - task: NuGetToolInstaller@1
 
-          - task: NuGetCommand@2
-            inputs:
-              restoreSolution: '$(solution)'
+# ======================
+# ====== BUILD STAGE ===
+# ======================
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+    - job: BuildAndPublish
+      displayName: 'Build, Test, and Publish Artifact'
+      steps:
 
-          - task: VSBuild@1
-            inputs:
-              solution: '$(solution)'
-              msbuildArgs: >
-                /p:DeployOnBuild=true
-                /p:WebPublishMethod=Package
-                /p:PackageAsSingleFile=true
-                /p:SkipInvalidConfigurations=true
-                /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip"
-                /p:DeployIisAppPath="Default Web Site"
-              platform: '$(buildPlatform)'
-              configuration: '$(buildConfiguration)'
+        - task: NuGetToolInstaller@1
 
-          - task: VSTest@2
-            inputs:
-              platform: '$(buildPlatform)'
-              configuration: '$(buildConfiguration)'
+        - task: NuGetCommand@2
+          inputs:
+            restoreSolution: '$(solution)'
 
-          - task: PublishBuildArtifacts@1
-            inputs:
-              PathtoPublish: '$(build.artifactStagingDirectory)'
-              ArtifactName: '$(artifactName)'
-              publishLocation: 'Container'
+        - task: VSBuild@1
+          inputs:
+            solution: '$(solution)'
+            msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
 
-  - stage: Deploy
-    displayName: 'Deploy to Azure Web App'
-    dependsOn: Build
-    jobs:
-      - deployment: DeployWebApp
-        displayName: 'Deploy Web App'
-        environment: 'Production'
-        strategy:
-          runOnce:
-            deploy:
-              steps:
-                - download: current
-                  artifact: $(artifactName)
+        - task: VSTest@2
+          inputs:
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
 
-                - task: AzureWebApp@1
-                  inputs:
-                    azureSubscription: 'deploytowebstage'
-                    appType: 'webApp'
-                    appName: 'ProductManagementAPI'
-                    package: '$(Pipeline.Workspace)/drop/WebApp.zip'
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(build.artifactStagingDirectory)'
+            ArtifactName: '$(artifactName)'
+            publishLocation: 'Container'
+
+# =======================
+# ====== DEPLOY STAGE ===
+# =======================
+- stage: Deploy
+  displayName: 'Deploy to Azure Web App'
+  dependsOn: Build
+  jobs:
+    - deployment: DeployWebApp
+      displayName: 'Deploy to ProductManagementAPI'
+      environment: 'Production'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+
+              - task: DownloadPipelineArtifact@2
+                inputs:
+                  artifactName: 'drop'
+                  targetPath: '$(Pipeline.Workspace)/drop'
+
+              - task: AzureWebApp@1
+                inputs:
+                  azureSubscription: 'deploytowebstage'
+                  appType: 'webApp'
+                  appName: 'ProductManagementAPI'
+                  package: '$(Pipeline.Workspace)/drop/WebApp.zip'
