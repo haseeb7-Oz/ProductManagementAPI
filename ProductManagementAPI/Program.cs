@@ -11,8 +11,8 @@ builder.Host.UseSerilog((context, config) =>
           .WriteTo.File("logs/app_log.txt", rollingInterval: RollingInterval.Day));
 
 // Add services to the container
-builder.Services.AddApplicationDb(builder.Configuration);
-builder.Services.AddCustomServices();
+//builder.Services.AddApplicationDb(builder.Configuration);
+//builder.Services.AddCustomServices();
 builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddCustomSwagger();
 builder.Services.AddCorsPolicy();
@@ -23,7 +23,7 @@ builder.Services.AddProblemDetails();
 var app = builder.Build();
 
 // Apply database migrations
-app.ApplyDatabaseMigrations();
+//app.ApplyDatabaseMigrations();
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
