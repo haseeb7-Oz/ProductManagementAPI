@@ -12,7 +12,7 @@ builder.Host.UseSerilog((context, config) =>
 
 // Add services to the container
 //builder.Services.AddApplicationDb(builder.Configuration);
-//builder.Services.AddCustomServices();
+builder.Services.AddCustomServices();
 builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddCustomSwagger();
 builder.Services.AddCorsPolicy();
