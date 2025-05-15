@@ -15,14 +15,14 @@ namespace ProductManagementAPI.Extensions
     {
         public static void AddCustomServices(this IServiceCollection services)
         {
-            /*services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IPlanManagementRepository, PlanManagementRepository>();
             services.AddScoped<IPlanManagementService, PlanManagementService>();
             services.AddScoped<ITierRepository, TierRepository>();
             services.AddScoped<ITierService, TierService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
-            services.AddScoped<ICustomerService, CustomerService>();*/
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddSingleton<JwtService>();
         }
 
