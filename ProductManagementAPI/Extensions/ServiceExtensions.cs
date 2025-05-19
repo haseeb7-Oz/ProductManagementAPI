@@ -38,7 +38,7 @@ namespace ProductManagementAPI.Extensions
             {
                 options.AddPolicy("AllowReactApp", policy =>
                 {
-                    policy.WithOrigins("http://localhost:3000")
+                    policy.WithOrigins("http://localhost:3000", "https://productmanagementreact-e4hvayhshbfacxe6.southeastasia-01.azurewebsites.net")
                           .AllowAnyHeader()
                           .AllowAnyMethod();
                 });
