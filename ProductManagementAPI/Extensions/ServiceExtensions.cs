@@ -8,6 +8,7 @@ using ProductManagementAPI.Repositories;
 using ProductManagementAPI.Services.Interfaces;
 using ProductManagementAPI.Services;
 using System.Text;
+using ProductManagementAPI.Data;
 
 namespace ProductManagementAPI.Extensions
 {

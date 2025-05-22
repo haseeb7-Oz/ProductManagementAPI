@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductManagementAPI.Database.Entities;
+using ProductManagementAPI.Data.Entities;
 using ProductManagementAPI.Services.Interfaces;
 
 namespace ProductManagementAPI.Controllers
@@ -18,7 +18,7 @@ namespace ProductManagementAPI.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<CustomerEntity?>> Add(CustomerEntity customer)
+        public async Task<ActionResult<Customer?>> Add(Customer customer)
         {
             _logger.LogInformation("Creating a new customer: {@Customer}", customer);
             return Ok(await _customerService.AddCustomerAsync(customer));
@@ -46,7 +46,7 @@ namespace ProductManagementAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<CustomerEntity?>> Update(CustomerEntity customer)
+        public async Task<ActionResult<Customer?>> Update(Customer customer)
         {
             _logger.LogInformation("Updating customer: {@Customer}", customer);
             return Ok(await _customerService.UpdateCustomerAsync(customer));

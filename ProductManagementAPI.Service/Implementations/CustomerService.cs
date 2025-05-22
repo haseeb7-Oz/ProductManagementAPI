@@ -1,4 +1,4 @@
-﻿using ProductManagementAPI.Database.Entities;
+﻿using ProductManagementAPI.Data.Entities;
 using ProductManagementAPI.Repositories.Interfaces;
 using ProductManagementAPI.Services.Interfaces;
 
@@ -13,18 +13,18 @@ namespace ProductManagementAPI.Services
             _customerRepository = customerRepository;
         }
 
-        public async Task<IEnumerable<CustomerEntity>> GetAllCustomersAsync() => await _customerRepository.GetAllAsync();
+        public async Task<IEnumerable<Customer>> GetAllCustomersAsync() => await _customerRepository.GetAllAsync();
 
-        public async Task<CustomerEntity> GetCustomerByIdAsync(Guid id) => await _customerRepository.GetByIdAsync(id);
+        public async Task<Customer> GetCustomerByIdAsync(Guid id) => await _customerRepository.GetByIdAsync(id);
 
-        public async Task<IEnumerable<CustomerEntity>> SearchCustomersAsync(string? keyword, int pageNumber, int pageSize)
+        public async Task<IEnumerable<Customer>> SearchCustomersAsync(string? keyword, int pageNumber, int pageSize)
         {
             return await _customerRepository.SearchAsync(keyword, pageNumber, pageSize);
         }
 
-        public async Task<CustomerEntity> AddCustomerAsync(CustomerEntity customer) => await _customerRepository.AddAsync(customer);
+        public async Task<Customer> AddCustomerAsync(Customer customer) => await _customerRepository.AddAsync(customer);
 
-        public async Task<CustomerEntity> UpdateCustomerAsync(CustomerEntity customer) => await _customerRepository.UpdateAsync(customer);
+        public async Task<Customer> UpdateCustomerAsync(Customer customer) => await _customerRepository.UpdateAsync(customer);
 
         public async Task DeleteCustomerAsync(Guid id) => await _customerRepository.DeleteAsync(id);
     }

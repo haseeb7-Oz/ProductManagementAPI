@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductManagementAPI.Database;
-using ProductManagementAPI.Database.Entities;
+using ProductManagementAPI.Data;
+using ProductManagementAPI.Data.Entities;
 using ProductManagementAPI.Repositories.Interfaces;
 
 namespace ProductManagementAPI.Repositories
@@ -14,7 +14,7 @@ namespace ProductManagementAPI.Repositories
            _context = context; 
         }
 
-        public async Task<IEnumerable<TierEntity>> GetAllAsync()
+        public async Task<IEnumerable<Tier>> GetAllAsync()
         {
             return await _context.Tiers.Include(x=>x.Offers).ToListAsync();
         }

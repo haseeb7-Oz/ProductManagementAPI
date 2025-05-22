@@ -1,15 +1,15 @@
-﻿using ProductManagementAPI.Database.Entities;
-using ProductManagementAPI.Common.Dtos;
+﻿using ProductManagementAPI.Common.Dtos;
+using ProductManagementAPI.Data.Entities;
 
 namespace ProductManagementAPI.Repositories.Interfaces
 {
     public interface IPlanManagementRepository
     {
-        Task<IEnumerable<PlanManagementEntity>> GetAllAsync();
-        Task<PlanManagementEntity?> GetByIdAsync(Guid id);
-        Task<IEnumerable<PlanManagementEntity>> SearchAsync(PlanSearchDto searchDto);
-        Task<PlanManagementEntity> AddAsync(PlanManagementEntity plan);
-        Task<PlanManagementEntity> UpdateAsync(PlanManagementEntity plan);
+        Task<IEnumerable<PlanManagement>> GetAllAsync();
+        Task<PlanManagement?> GetByIdAsync(Guid id);
+        Task<IEnumerable<PlanManagement>> SearchAsync(PlanSearchDto searchDto);
+        Task<PlanManagement> AddAsync(PlanManagement plan);
+        Task<PlanManagement> UpdateAsync(PlanManagement plan);
         Task DeleteAsync(Guid id);
     }
 }

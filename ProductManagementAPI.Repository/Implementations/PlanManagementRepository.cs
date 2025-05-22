@@ -3,6 +3,8 @@ using ProductManagementAPI.Database;
 using ProductManagementAPI.Database.Entities;
 using ProductManagementAPI.Repositories.Interfaces;
 using ProductManagementAPI.Common.Dtos;
+using ProductManagementAPI.Data;
+using ProductManagementAPI.Data.Entities;
 
 namespace ProductManagementAPI.Repositories
 {
@@ -15,17 +17,17 @@ namespace ProductManagementAPI.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<PlanManagementEntity>> GetAllAsync()
+        public async Task<IEnumerable<PlanManagement>> GetAllAsync()
         {
             return await GetBaseQuery().ToListAsync();
         }
 
-        public async Task<PlanManagementEntity?> GetByIdAsync(Guid id)
+        public async Task<PlanManagement?> GetByIdAsync(Guid id)
         {
             return await GetBaseQuery().FirstOrDefaultAsync(pm => pm.Id == id);
         }
 
-        public async Task<IEnumerable<PlanManagementEntity>> SearchAsync(PlanSearchDto searchDto)
+        public async Task<IEnumerable<PlanManagement>> SearchAsync(PlanSearchDto searchDto)
         {
             var query = GetBaseQuery().AsQueryable();
 
@@ -46,7 +48,7 @@ namespace ProductManagementAPI.Repositories
                 .ToListAsync();
         }
 
-        public async Task<PlanManagementEntity> AddAsync(PlanManagementEntity plan)
+        public async Task<PlanManagement> AddAsync(PlanManagement plan)
         {
             await _context.PlanManagements.AddAsync(plan);
             await _context.SaveChangesAsync();
@@ -54,7 +56,7 @@ namespace ProductManagementAPI.Repositories
             return plan;
         }
 
-        public async Task<PlanManagementEntity> UpdateAsync(PlanManagementEntity plan)
+        public async Task<PlanManagement> UpdateAsync(PlanManagement plan)
         {
             _context.PlanManagements.Update(plan);
             await _context.SaveChangesAsync();
@@ -75,7 +77,7 @@ namespace ProductManagementAPI.Repositories
 
         #region Helper Methods
 
-        private IQueryable<PlanManagementEntity> GetBaseQuery()
+        private IQueryable<PlanManagement> GetBaseQuery()
         {
             return _context.PlanManagements
                 .Include(pm => pm.Month)

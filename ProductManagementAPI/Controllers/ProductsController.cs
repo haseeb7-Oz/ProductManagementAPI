@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ProductManagementAPI.Data.Entities;
 using ProductManagementAPI.Database.Entities;
 using ProductManagementAPI.Services.Interfaces;
 
@@ -21,7 +22,7 @@ namespace ProductManagementAPI.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<ProductEntity?>> Add(ProductEntity product)
+        public async Task<ActionResult<Product?>> Add(Product product)
         {
             _logger.LogInformation("Creating a new product: {@Product}", product);
             return Ok(await _productService.AddProductAsync(product));
@@ -49,7 +50,7 @@ namespace ProductManagementAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<ProductEntity?>> Update(ProductEntity product)
+        public async Task<ActionResult<Product?>> Update(Product product)
         {
             _logger.LogInformation("Updating product: {@Product}", product);
             return Ok(await _productService.UpdateProductAsync(product));

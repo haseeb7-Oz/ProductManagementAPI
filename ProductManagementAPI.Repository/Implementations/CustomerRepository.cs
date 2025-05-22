@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ProductManagementAPI.Data;
+using ProductManagementAPI.Data.Entities;
 using ProductManagementAPI.Database;
 using ProductManagementAPI.Database.Entities;
 using ProductManagementAPI.Repositories.Interfaces;
@@ -18,11 +20,11 @@ namespace ProductManagementAPI.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<CustomerEntity>> GetAllAsync() => await _context.Customers.ToListAsync();
+        public async Task<IEnumerable<Customer>> GetAllAsync() => await _context.Customers.ToListAsync();
 
-        public async Task<CustomerEntity> GetByIdAsync(Guid id) => await _context.Customers.FindAsync(id);
+        public async Task<Customer> GetByIdAsync(Guid id) => await _context.Customers.FindAsync(id);
 
-        public async Task<IEnumerable<CustomerEntity>> SearchAsync(string? keyword, int pageNumber, int pageSize)
+        public async Task<IEnumerable<Customer>> SearchAsync(string? keyword, int pageNumber, int pageSize)
         {
             var query = _context.Customers.AsQueryable();
 
@@ -37,7 +39,7 @@ namespace ProductManagementAPI.Repositories
                 .ToListAsync();
         }
 
-        public async Task<CustomerEntity> AddAsync(CustomerEntity customer)
+        public async Task<Customer> AddAsync(Customer customer)
         {
             await _context.Customers.AddAsync(customer);
             await _context.SaveChangesAsync();
@@ -45,7 +47,7 @@ namespace ProductManagementAPI.Repositories
             return customer;
         }
 
-        public async Task<CustomerEntity> UpdateAsync(CustomerEntity customer)
+        public async Task<Customer> UpdateAsync(Customer customer)
         {
             _context.Customers.Update(customer);
             await _context.SaveChangesAsync();

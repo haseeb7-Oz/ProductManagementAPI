@@ -1,9 +1,9 @@
-﻿using ProductManagementAPI.Database.Entities;
+﻿using ProductManagementAPI.Data.Entities;
 
 namespace ProductManagementAPI.Services.Interfaces
 {
     public interface ITierService
     {
-        Task<IEnumerable<TierEntity>> GetAllTiersAsync();
+        Task<IEnumerable<Tier>> GetAllTiersAsync();
     }
 }

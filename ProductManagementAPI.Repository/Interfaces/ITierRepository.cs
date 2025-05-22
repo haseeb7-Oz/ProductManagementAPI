@@ -1,9 +1,9 @@
-﻿using ProductManagementAPI.Database.Entities;
+﻿using ProductManagementAPI.Data.Entities;
 
 namespace ProductManagementAPI.Repositories.Interfaces
 {
     public interface ITierRepository
     {
-        Task<IEnumerable<TierEntity>> GetAllAsync();
+        Task<IEnumerable<Tier>> GetAllAsync();
     }
 }

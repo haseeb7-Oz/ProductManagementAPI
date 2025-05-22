@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductManagementAPI.Database;
-using ProductManagementAPI.Database.Entities;
+using ProductManagementAPI.Data;
+using ProductManagementAPI.Data.Entities;
 using ProductManagementAPI.Repositories.Interfaces;
 
 namespace ProductManagementAPI.Repositories
@@ -14,11 +14,11 @@ namespace ProductManagementAPI.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<ProductEntity>> GetAllAsync() => await _context.Products.ToListAsync();
+        public async Task<IEnumerable<Product>> GetAllAsync() => await _context.Products.ToListAsync();
 
-        public async Task<ProductEntity> GetByIdAsync(Guid id) => await _context.Products.FindAsync(id);
+        public async Task<Product> GetByIdAsync(Guid id) => await _context.Products.FindAsync(id);
 
-        public async Task<IEnumerable<ProductEntity>> SearchAsync(string? keyword, int pageNumber, int pageSize)
+        public async Task<IEnumerable<Product>> SearchAsync(string? keyword, int pageNumber, int pageSize)
         {
             var query = _context.Products.AsQueryable();
 
@@ -33,7 +33,7 @@ namespace ProductManagementAPI.Repositories
                 .ToListAsync();
         }
 
-        public async Task<ProductEntity> AddAsync(ProductEntity product)
+        public async Task<Product> AddAsync(Product product)
         {
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
@@ -41,7 +41,7 @@ namespace ProductManagementAPI.Repositories
             return product;
         }
 
-        public async Task<ProductEntity> UpdateAsync(ProductEntity product)
+        public async Task<Product> UpdateAsync(Product product)
         {
             _context.Products.Update(product);
             await _context.SaveChangesAsync();

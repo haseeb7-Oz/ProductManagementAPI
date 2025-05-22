@@ -1,4 +1,4 @@
-﻿using ProductManagementAPI.Database.Entities;
+﻿using ProductManagementAPI.Data.Entities;
 using ProductManagementAPI.Repositories.Interfaces;
 using ProductManagementAPI.Services.Interfaces;
 
@@ -13,6 +13,6 @@ namespace ProductManagementAPI.Services
             _tierRepository = tierRepository;
         }
 
-        public async Task<IEnumerable<TierEntity>> GetAllTiersAsync() => await _tierRepository.GetAllAsync();
+        public async Task<IEnumerable<Tier>> GetAllTiersAsync() => await _tierRepository.GetAllAsync();
     }
 }

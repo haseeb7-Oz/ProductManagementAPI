@@ -1,14 +1,14 @@
-﻿using ProductManagementAPI.Database.Entities;
+﻿using ProductManagementAPI.Data.Entities;
 
 namespace ProductManagementAPI.Repositories.Interfaces
 {
     public interface IProductRepository
     {
-        Task<IEnumerable<ProductEntity>> GetAllAsync();
-        Task<ProductEntity> GetByIdAsync(Guid id);
-        Task<IEnumerable<ProductEntity>> SearchAsync(string? keyword, int pageNumber, int pageSize);
-        Task<ProductEntity> AddAsync(ProductEntity product);
-        Task<ProductEntity> UpdateAsync(ProductEntity product);
+        Task<IEnumerable<Product>> GetAllAsync();
+        Task<Product> GetByIdAsync(Guid id);
+        Task<IEnumerable<Product>> SearchAsync(string? keyword, int pageNumber, int pageSize);
+        Task<Product> AddAsync(Product product);
+        Task<Product> UpdateAsync(Product product);
         Task DeleteAsync(Guid id);
     }
 }

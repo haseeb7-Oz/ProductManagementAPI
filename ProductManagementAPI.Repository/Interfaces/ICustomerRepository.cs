@@ -1,14 +1,14 @@
-﻿using ProductManagementAPI.Database.Entities;
+﻿using ProductManagementAPI.Data.Entities;
 
 namespace ProductManagementAPI.Repositories.Interfaces
 {
     public interface ICustomerRepository
     {
-        Task<IEnumerable<CustomerEntity>> GetAllAsync();
-        Task<CustomerEntity> GetByIdAsync(Guid id);
-        Task<IEnumerable<CustomerEntity>> SearchAsync(string? keyword, int pageNumber, int pageSize);
-        Task<CustomerEntity> AddAsync(CustomerEntity customer);
-        Task<CustomerEntity> UpdateAsync(CustomerEntity customer);
+        Task<IEnumerable<Customer>> GetAllAsync();
+        Task<Customer> GetByIdAsync(Guid id);
+        Task<IEnumerable<Customer>> SearchAsync(string? keyword, int pageNumber, int pageSize);
+        Task<Customer> AddAsync(Customer customer);
+        Task<Customer> UpdateAsync(Customer customer);
         Task DeleteAsync(Guid id);
     }
 }

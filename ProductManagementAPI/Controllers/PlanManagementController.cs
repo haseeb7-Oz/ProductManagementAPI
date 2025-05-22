@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ProductManagementAPI.Database.Entities;
 using ProductManagementAPI.Common.Dtos;
 using ProductManagementAPI.Services.Interfaces;
+using ProductManagementAPI.Data.Entities;
 
 namespace ProductManagementAPI.Controllers
 {
@@ -21,7 +21,7 @@ namespace ProductManagementAPI.Controllers
         }
 
         [HttpPost("create")]
-        public async Task<ActionResult<PlanManagementEntity?>> Add(PlanManagementEntity plan)
+        public async Task<ActionResult<PlanManagement?>> Add(PlanManagement plan)
         {
             _logger.LogInformation("Creating a new Plan: {@Plan}", plan);
             //plan.Id = 0;
@@ -50,7 +50,7 @@ namespace ProductManagementAPI.Controllers
         }
 
         [HttpPut("update")]
-        public async Task<ActionResult<PlanManagementEntity?>> Update(PlanManagementEntity plan)
+        public async Task<ActionResult<PlanManagement?>> Update(PlanManagement plan)
         {
             _logger.LogInformation("Updating plan: {@Plan}", plan);
             return Ok(await _planManagementService.UpdatePlanAsync(plan));

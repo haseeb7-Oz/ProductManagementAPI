@@ -1,14 +1,15 @@
-﻿using ProductManagementAPI.Database.Entities;
+﻿using ProductManagementAPI.Data.Entities;
+using ProductManagementAPI.Database.Entities;
 
 namespace ProductManagementAPI.Services.Interfaces
 {
     public interface ICustomerService
     {
-        Task<IEnumerable<CustomerEntity>> GetAllCustomersAsync();
-        Task<CustomerEntity> GetCustomerByIdAsync(Guid id);
-        Task<IEnumerable<CustomerEntity>> SearchCustomersAsync(string? keyword, int pageNumber, int pageSize);
-        Task<CustomerEntity> AddCustomerAsync(CustomerEntity customer);
-        Task<CustomerEntity> UpdateCustomerAsync(CustomerEntity customer);
+        Task<IEnumerable<Customer>> GetAllCustomersAsync();
+        Task<Customer> GetCustomerByIdAsync(Guid id);
+        Task<IEnumerable<Customer>> SearchCustomersAsync(string? keyword, int pageNumber, int pageSize);
+        Task<Customer> AddCustomerAsync(Customer customer);
+        Task<Customer> UpdateCustomerAsync(Customer customer);
         Task DeleteCustomerAsync(Guid id);
     }
 }
