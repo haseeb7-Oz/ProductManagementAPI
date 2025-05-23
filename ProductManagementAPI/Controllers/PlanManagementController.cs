@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductManagementAPI.Database.Entities;
-using ProductManagementAPI.DTOs;
+using ProductManagementAPI.Common.Dtos;
 using ProductManagementAPI.Services.Interfaces;
 
 namespace ProductManagementAPI.Controllers

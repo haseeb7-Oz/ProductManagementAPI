@@ -1,0 +1,75 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  artifactName: 'drop'
+
+stages:
+
+# ======================
+# ====== BUILD STAGE ===
+# ======================
+- stage: Build
+  displayName: 'Build and Test'
+  jobs:
+    - job: BuildAndPublish
+      displayName: 'Build, Test, and Publish Artifact'
+      steps:
+
+        - task: NuGetToolInstaller@1
+
+        - task: NuGetCommand@2
+          inputs:
+            restoreSolution: '$(solution)'
+
+        - task: VSBuild@1
+          inputs:
+            solution: '$(solution)'
+            msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+
+        - task: VSTest@2
+          inputs:
+            platform: '$(buildPlatform)'
+            configuration: '$(buildConfiguration)'
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(build.artifactStagingDirectory)'
+            ArtifactName: '$(artifactName)'
+            publishLocation: 'Container'
+
+# =======================
+# ====== DEPLOY STAGE ===
+# =======================
+- stage: Deploy
+  displayName: 'Deploy to Azure Web App'
+  dependsOn: Build
+  jobs:
+    - deployment: DeployWebApp
+      displayName: 'Deploy to ProductManagementAPI'
+      environment: 'Production'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+
+              - task: DownloadPipelineArtifact@2
+                inputs:
+                  artifactName: 'drop'
+                  targetPath: '$(Pipeline.Workspace)/drop'
+
+              - task: AzureRmWebAppDeployment@4
+                inputs:
+                  connectionType: 'AzureRM'
+                  azureSubscription: 'deploytowebstage'
+                  appType: 'webApp'
+                  WebAppName: 'ProductManagementAPI'
+                  packageForLinux: '$(Pipeline.Workspace)/drop/WebApp.zip'

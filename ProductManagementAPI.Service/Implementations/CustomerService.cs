@@ -1,9 +1,6 @@
 ﻿using ProductManagementAPI.Database.Entities;
 using ProductManagementAPI.Repositories.Interfaces;
 using ProductManagementAPI.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace ProductManagementAPI.Services
 {
